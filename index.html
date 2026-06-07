@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oakridge Chicago RP - FiveM Whitelist Server</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- DESKTOP ICONS (Navigation) -->
+    <div class="desktop-icons">
+        <div class="desktop-icon" onclick="showPage('home')">
+            <span class="desktop-icon-img">📁</span>
+            <span>Server Info</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('rules')">
+            <span class="desktop-icon-img">📋</span>
+            <span>Server Rules</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('features')">
+            <span class="desktop-icon-img">⭐</span>
+            <span>Why Join</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('gallery')">
+            <span class="desktop-icon-img">🖼️</span>
+            <span>Gallery</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('shop')">
+            <span class="desktop-icon-img">🛒</span>
+            <span>Shop</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('apply')">
+            <span class="desktop-icon-img">📝</span>
+            <span>Apply</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('status')">
+            <span class="desktop-icon-img">🔍</span>
+            <span>Check Status</span>
+        </div>
+        <div class="desktop-icon" onclick="showPage('staff')">
+            <span class="desktop-icon-img">🔒</span>
+            <span>Staff Login</span>
+        </div>
+    </div>
+
+    <!-- TASKBAR -->
+    <div class="taskbar">
+        <div class="taskbar-start">
+            <button class="taskbar-btn start-btn" onclick="toggleStartMenu()">
+                <span class="win-logo">⊞</span> Start
+            </button>
+        </div>
+        <div class="taskbar-windows">
+            <span class="taskbar-item active-window">📁 Oakridge Chicago RP</span>
+        </div>
+        <div class="taskbar-tray">
+            <span class="tray-time" id="tray-time">2:13 PM</span>
+            <span class="tray-online" id="tray-online" title="Server Status">● Offline</span>
+        </div>
+    </div>
+
+    <!-- START MENU -->
+    <div class="start-menu" id="startMenu" style="display:none;">
+        <div class="start-menu-sidebar">
+            <span class="start-menu-sidebar-text">Windows 97</span>
+        </div>
+        <div class="start-menu-items">
+            <div class="start-menu-item" onclick="showPage('home'); toggleStartMenu();"><span>📁</span> Server Info</div>
+            <div class="start-menu-item" onclick="showPage('rules'); toggleStartMenu();"><span>📋</span> Server Rules</div>
+            <div class="start-menu-item" onclick="showPage('features'); toggleStartMenu();"><span>⭐</span> Why Join Us</div>
+            <div class="start-menu-item" onclick="showPage('gallery'); toggleStartMenu();"><span>🖼️</span> Gallery</div>
+            <div class="start-menu-item" onclick="showPage('shop'); toggleStartMenu();"><span>🛒</span> Shop</div>
+            <div class="start-menu-divider"></div>
+            <div class="start-menu-item" onclick="showPage('apply'); toggleStartMenu();"><span>📝</span> Apply</div>
+            <div class="start-menu-item" onclick="showPage('status'); toggleStartMenu();"><span>🔍</span> Check Status</div>
+            <div class="start-menu-divider"></div>
+            <div class="start-menu-item" onclick="showPage('staff'); toggleStartMenu();"><span>🔒</span> Staff Login</div>
+        </div>
+    </div>
+
+    <!-- ========== PAGES ========== -->
+
+    <!-- PAGE: HOME -->
+    <div class="win-page active" id="page-home">
+        <div class="win-titlebar"><span class="window-title">📁 Server Info</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">─</span><span class="win-taskbar-icon win-close" onclick="showPage('home')">□</span><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-hero">
+                <div class="win-hero-bg"><img src="assets/hero-bg.png" alt="Oakridge Chicago" class="win-hero-img"><div class="win-hero-overlay"></div></div>
+                <div class="win-hero-content">
+                    <div class="win-hero-badge">FIVEM WHITELIST</div>
+                    <h1 class="win-hero-title">OAKRIDGE CHICAGO RP</h1>
+                    <p class="win-hero-sub">Serious Roleplay. Real Stories. One City.</p>
+                    <div class="win-hero-buttons">
+                        <button class="win-btn win-btn-accent" onclick="connectServer()">▶ Connect</button>
+                        <button class="win-btn" onclick="showPage('apply')">📝 Apply</button>
+                        <button class="win-btn" onclick="showPage('rules')">📋 Server Rules</button>
+                        <button class="win-btn" onclick="showPage('shop')">🛒 Shop</button>
+                    </div>
+                </div>
+            </div>
+            <div class="win-stats">
+                <div class="win-stat-box"><div class="win-stat-number" id="player-count">--</div><div class="win-stat-label">Players Online</div></div>
+                <div class="win-stat-box"><div class="win-stat-number" id="restart-timer">--</div><div class="win-stat-label">Next Restart</div></div>
+                <div class="win-stat-box"><div class="win-stat-number" id="server-uptime">--</div><div class="win-stat-label">Uptime</div></div>
+                <div class="win-stat-box"><div class="win-stat-number" id="server-status">Offline</div><div class="win-stat-label">Server Status</div></div>
+            </div>
+            <div class="win-section-header">📋 REQUIREMENTS TO JOIN</div>
+            <div class="win-reqs">
+                <div class="win-req-item"><span class="win-req-icon">✓</span><div><strong>Retro Knowledge</strong><p>Understand and know 1990's slang and technology.</p></div></div>
+                <div class="win-req-item"><span class="win-req-icon">✓</span><div><strong>Microphone</strong><p>Voice communication required.</p></div></div>
+                <div class="win-req-item"><span class="win-req-icon">✓</span><div><strong>High Quality Roleplay</strong><p>Prioritize heavy immersion and realistic character development.</p></div></div>
+                <div class="win-req-item"><span class="win-req-icon">✓</span><div><strong>18+ ONLY</strong><p>By applying, you represent that you are 18 years of age or older.</p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: RULES -->
+    <div class="win-page" id="page-rules">
+        <div class="win-titlebar"><span class="window-title">📋 Server Rules</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">SERVER RULES & GUIDELINES</div>
+            <p class="win-rules-intro">All players must follow these rules. Failure to comply will result in warnings, kicks, or bans.</p>
+            <div class="win-rules-grid">
+                <div class="win-rule-card"><h4>🎭 Roleplay First</h4><ul><li>Always stay in character</li><li>No OOC chat in-character</li><li>Value your character's life</li></ul></div>
+                <div class="win-rule-card"><h4>⚖️ Fair Play</h4><ul><li>No RDM / No VDM</li><li>No metagaming</li><li>No powergaming</li></ul></div>
+                <div class="win-rule-card"><h4>🚗 Traffic & Vehicles</h4><ul><li>Drive realistically</li><li>No GTA-style driving</li><li>Yield to emergency vehicles</li></ul></div>
+                <div class="win-rule-card"><h4>🎤 Communication</h4><ul><li>Working mic required</li><li>No background noise</li><li>English only in public</li></ul></div>
+                <div class="win-rule-card"><h4>💰 Economy & Crime</h4><ul><li>No exploiting</li><li>Realistic escalation</li><li>No cop baiting</li></ul></div>
+                <div class="win-rule-card"><h4>👮 Respect Staff</h4><ul><li>Follow staff instructions</li><li>Appeals via Discord</li><li>Staff decisions are final</li></ul></div>
+            </div>
+            <div class="win-rules-footer">⚠️ By applying you agree to follow all rules.</div>
+        </div>
+    </div>
+
+    <!-- PAGE: FEATURES -->
+    <div class="win-page" id="page-features">
+        <div class="win-titlebar"><span class="window-title">⭐ Why Join Oakridge?</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">WHY CHOOSE OAKRIDGE CHICAGO RP</div>
+            <div class="win-features-grid">
+                <div class="win-feature-card"><span class="win-feature-icon">🏙️</span><h4>Custom Chicago Map</h4><p>Faithfully recreated Chicago with custom MLOs.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">👮</span><h4>Active LEO</h4><p>CPD, State Police, Sheriff with realistic procedures.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">🚑</span><h4>EMS & Fire</h4><p>Full EMS and CFD with advanced medical systems.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">🔫</span><h4>Organized Crime</h4><p>Gangs, mafias, territory wars, heists.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">🚗</span><h4>Custom Vehicles</h4><p>Hundreds of cars, dealerships, customization.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">💼</span><h4>Civilian Jobs</h4><p>Trucking, taxi, construction, fishing, more.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">🏠</span><h4>Player Housing</h4><p>Buy, sell, decorate properties across the city.</p></div>
+                <div class="win-feature-card"><span class="win-feature-icon">🎉</span><h4>Community Events</h4><p>Car meets, fight nights, holiday specials.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: GALLERY -->
+    <div class="win-page" id="page-gallery">
+        <div class="win-titlebar"><span class="window-title">🖼️ Gallery</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">📸 SERVER SCREENSHOTS</div>
+            <p class="win-rules-intro">Add images to <code>assets/gallery/</code> and update the JS config.</p>
+            <div class="win-gallery-grid" id="galleryGrid"></div>
+            <div class="win-gallery-instructions"><p>📁 <strong>How to add photos:</strong></p><ol><li>Put images in <code>main-website/assets/gallery/</code></li><li>Name them <code>gallery-1.jpg</code>, <code>gallery-2.jpg</code> etc.</li><li>Edit the <code>galleryImages</code> array in <code>js/script.js</code></li></ol></div>
+        </div>
+    </div>
+
+    <!-- PAGE: SHOP -->
+    <div class="win-page" id="page-shop">
+        <div class="win-titlebar"><span class="window-title">🛒 Donation Store</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">🛒 DONATION STORE</div>
+            <p class="win-rules-intro">Support Oakridge Chicago RP and unlock exclusive perks! All purchases help keep the server running.</p>
+
+            <!-- Category tabs -->
+            <div class="shop-categories" id="shopCategories"></div>
+
+            <!-- Search & cart summary -->
+            <div class="shop-toolbar">
+                <div class="shop-search">
+                    <input type="text" id="shopSearch" class="win-input" placeholder="Search products..." oninput="filterShopProducts()">
+                </div>
+                <div class="shop-cart-info" id="shopCartInfo" onclick="openCartModal()">
+                    🛒 Cart: <strong id="shopCartCount">0</strong> items
+                </div>
+            </div>
+
+            <!-- Products grid -->
+            <div class="shop-products" id="shopProducts">
+                <div class="shop-loading">Loading products...</div>
+            </div>
+
+            <!-- Cart modal (popup menu) -->
+            <div class="shop-cart-overlay" id="shopCartOverlay" onclick="closeCartModal()"></div>
+            <div class="shop-cart-modal" id="shopCartModal">
+                <div class="shop-cart-modal-titlebar">
+                    <span>🛒 Your Cart</span>
+                    <button class="win-taskbar-icon" onclick="closeCartModal()">✕</button>
+                </div>
+                <div class="shop-cart-modal-body" id="shopCartItems">
+                    <p class="shop-cart-empty">Your cart is empty</p>
+                </div>
+                <div class="shop-cart-modal-footer">
+                    <div class="shop-cart-total">Total: <strong id="shopCartTotal">$0.00</strong></div>
+                    <div class="shop-cart-modal-buttons">
+                        <button class="win-btn" onclick="closeCartModal()">Continue Shopping</button>
+                        <button class="win-btn win-btn-accent" id="shopCheckoutBtn" onclick="checkoutCart()" disabled>Proceed to Checkout →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: APPLY -->
+    <div class="win-page" id="page-apply">
+        <div class="win-titlebar"><span class="window-title">📝 Whitelist Application</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">APPLY FOR WHITELIST</div>
+            <p class="win-form-desc">Staff will review and contact you via Discord.</p>
+            <form id="applicationForm" class="win-form" onsubmit="return submitApplication(event);">
+                <div class="win-field-row">
+                    <div class="win-form-group"><label>Discord ID <span class="required">*</span></label><input type="text" id="appDiscordId" class="win-input" placeholder="Numbers only" required><small>Discord Settings → Advanced</small></div>
+                    <div class="win-form-group"><label>In-Game Name <span class="required">*</span></label><input type="text" id="appUsername" class="win-input" placeholder="Character name" required></div>
+                </div>
+                <div class="win-field-row">
+                    <div class="win-form-group"><label>Real Name <span class="required">*</span></label><input type="text" id="appRealName" class="win-input" placeholder="First name" required></div>
+                    <div class="win-form-group"><label>Age <span class="required">*</span></label><input type="number" id="appAge" class="win-input" placeholder="Age" min="13" required></div>
+                </div>
+                <div class="win-form-group"><label>Discord Username</label><input type="text" id="appDiscordUsername" class="win-input" placeholder="player#0001"></div>
+                <div class="win-form-group"><label>Roleplay Experience <span class="required">*</span></label>
+                    <select id="appRoleplayExp" class="win-input" required><option value="">-- Select --</option><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Experienced">Experienced</option><option value="Veteran">Veteran</option></select>
+                </div>
+                <div class="win-form-group"><label>Preferred Faction <span class="required">*</span></label>
+                    <select id="appFaction" class="win-input" required><option value="">-- Select --</option><option value="Civilian">Civilian</option><option value="Law Enforcement">Law Enforcement</option><option value="EMS/Fire">EMS / Fire</option><option value="Criminal">Criminal</option><option value="Business">Business Owner</option></select>
+                </div>
+                <div class="win-form-group"><label>Why join? <span class="required">*</span></label><textarea id="appWhyJoin" class="win-input" rows="3" required></textarea></div>
+                <div class="win-checkbox-group"><label class="win-checkbox-label"><input type="checkbox" id="appRulesAgree" required> I agree to server rules</label></div>
+                <button type="submit" class="win-btn win-btn-accent win-btn-block">📤 Submit</button>
+                <div id="applicationResult" class="win-result"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAGE: CHECK STATUS -->
+    <div class="win-page" id="page-status">
+        <div class="win-titlebar"><span class="window-title">🔍 Check Status</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">CHECK YOUR APPLICATION STATUS</div>
+            <div class="win-status-lookup">
+                <div class="win-form-group">
+                    <label for="status-discord-id">Your Discord ID</label>
+                    <input type="text" id="status-discord-id" class="win-input" placeholder="Enter your Discord ID">
+                </div>
+                <button class="win-btn win-btn-accent" onclick="checkApplicationStatus()">🔍 Check</button>
+            </div>
+            <div id="status-result" class="win-result"></div>
+        </div>
+    </div>
+
+    <!-- PAGE: STAFF LOGIN -->
+    <div class="win-page" id="page-staff">
+        <div class="win-titlebar"><span class="window-title">🔒 Staff Login</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="showPage('home')">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-section-header">STAFF LOGIN</div>
+            <p class="win-form-desc">Authorized personnel only.</p>
+            <form id="staffLoginForm" class="win-form" onsubmit="return staffLoginHandler(event);">
+                <div class="win-form-group"><label>Username</label><input type="text" id="staffUsername" class="win-input" required></div>
+                <div class="win-form-group"><label>Password</label><input type="password" id="staffPassword" class="win-input" required></div>
+                <button type="submit" class="win-btn win-btn-accent win-btn-block">🔓 Login</button>
+                <div id="login-result" class="win-result"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PAGE: STAFF DASHBOARD (hidden, shown after login) -->
+    <div class="win-page" id="page-dashboard">
+        <div class="win-titlebar win-titlebar-dash"><span class="window-title">📊 Staff Dashboard</span><div class="window-controls"><span class="win-taskbar-icon win-close" onclick="logoutAndClose()">✕</span></div></div>
+        <div class="window-body">
+            <div class="win-dash-header">
+                <span>Welcome, <strong id="staffName">Staff</strong> | <span id="staffRole">Staff</span></span>
+                <div>
+                    <button class="win-btn" onclick="goToDashboardPage('home')">📊 Overview</button>
+                    <button class="win-btn" onclick="goToDashboardPage('pending')">⏳ Pending</button>
+                    <button class="win-btn" onclick="goToDashboardPage('approved')">✅ Approved</button>
+                    <button class="win-btn" onclick="goToDashboardPage('denied')">❌ Denied</button>
+                    <button class="win-btn win-btn-danger" onclick="logoutAndClose()">🚪 Logout</button>
+                </div>
+            </div>
+            <div id="dashboard-home">
+                <div class="win-section-header">DASHBOARD OVERVIEW</div>
+                <div class="win-stats" id="dash-stats">
+                    <div class="win-stat-box"><div class="win-stat-number" id="dash-pending-count">0</div><div class="win-stat-label">Pending</div></div>
+                    <div class="win-stat-box"><div class="win-stat-number" id="dash-approved-count">0</div><div class="win-stat-label">Approved</div></div>
+                    <div class="win-stat-box"><div class="win-stat-number" id="dash-denied-count">0</div><div class="win-stat-label">Denied</div></div>
+                    <div class="win-stat-box"><div class="win-stat-number" id="dash-total-count">0</div><div class="win-stat-label">Total</div></div>
+                </div>
+                <div class="win-section-header" style="margin-top:12px;">🔌 DISCORD BOT STATUS</div>
+                <div class="win-dash-bot-status">
+                    <div class="win-stat-box win-stat-box-horizontal"><span class="win-stat-label">Bot Status:</span><span class="win-stat-value" id="bot-status-indicator">Not Connected</span></div>
+                    <div class="win-stat-box win-stat-box-horizontal"><span class="win-stat-label">Last Sync:</span><span class="win-stat-value" id="bot-last-sync">Never</span></div>
+                    <div class="win-stat-box win-stat-box-horizontal"><span class="win-stat-label">DM Queue:</span><span class="win-stat-value" id="bot-dm-queue">0</span></div>
+                </div>
+            </div>
+            <div id="dashboard-pending" style="display:none;">
+                <div class="win-section-header">⏳ PENDING</div>
+                <div class="win-table-wrap"><table class="win-table"><thead><tr><th>Discord ID</th><th>Name</th><th>Age</th><th>Faction</th><th>Date</th><th>Actions</th></tr></thead><tbody id="pendingApplicationsBody"></tbody></table></div>
+                <button class="win-btn" onclick="goToDashboardPage('home')">← Back</button>
+            </div>
+            <div id="dashboard-approved" style="display:none;">
+                <div class="win-section-header">✅ APPROVED</div>
+                <div class="win-table-wrap"><table class="win-table"><thead><tr><th>Discord ID</th><th>Name</th><th>Approved</th><th>By</th></tr></thead><tbody id="approvedApplicationsBody"></tbody></table></div>
+                <button class="win-btn" onclick="goToDashboardPage('home')">← Back</button>
+            </div>
+            <div id="dashboard-denied" style="display:none;">
+                <div class="win-section-header">❌ DENIED</div>
+                <div class="win-table-wrap"><table class="win-table"><thead><tr><th>Discord ID</th><th>Name</th><th>Date</th><th>Reason</th></tr></thead><tbody id="deniedApplicationsBody"></tbody></table></div>
+                <button class="win-btn" onclick="goToDashboardPage('home')">← Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="win-footer">
+        <p>© 2026 Oakridge Chicago RP. Not affiliated with Rockstar Games or FiveM.</p>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="win-lightbox" id="winLightbox">
+        <span class="win-lightbox-close" onclick="closeLightbox()">✖</span>
+        <img id="lbImage" src="" alt="">
+        <div id="lbCaption" class="win-lightbox-caption"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
